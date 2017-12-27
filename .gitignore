@@ -1,0 +1,8 @@
+/build
+*.swatch
+*.plist
+*.swp
+*.bvh
+*.a
+*.o
+*.so

@@ -1,0 +1,3 @@
+[submodule "rib_lexer_parser"]
+	path = rib_lexer_parser
+	url = https://github.com/mishurov/rib_lexer_parser.git

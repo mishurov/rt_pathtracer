@@ -1,0 +1,62 @@
+##RenderMan RIB
+#Created by RenderMan for Maya 21.5 (@1769424 Jul 26 2017)
+#Fri Dec 22 16:34:48 MSK 2017
+#bbox: -0.6593785286 -0.03603255376 -0.6362767816 0.4204889536 0.09129247069 0.5852828622 
+version 3.04
+ScopedCoordinateSystem "world_ref"
+
+Light "PxrDomeLight" "Light"
+"float intensity" [0.3]
+"color lightColor" [0.7 0.7 0.7]
+
+AttributeBegin
+
+# light
+TransformBegin
+Translate 1.0 0.5 0.0
+Rotate 145 0 0 1
+Scale 0.3 1 0.3
+
+Light "PxrMeshLight" "area"
+"color lightColor" [1.0 1.0 1.0]
+"float intensity" [5]
+PointsGeneralPolygons
+[1 1 1 1] [4 4 4 4] [0 1 4 3 1 2 5 4 3 4 7 6 4 5 8 7]
+"P"
+[-1 0 1 0 0 1 1 0 1 -1 0 0 0 0 0 1 0 0 -1 0 -1 0 0 -1 1 0 -1]
+"constant string primtype" ["mesh"] "facevarying normal N"
+[0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0
+0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0]
+"facevarying float s"
+[0 0.5 0.5 0 0.5 1 1 0.5 0 0.5 0.5 0 0.5 1 1 0.5]
+"facevarying float t"
+[0 0 0.5 0.5 0 0 0.5 0.5 0.5 0.5 1 1 0.5 0.5 1 1]
+TransformEnd
+
+# polygon
+Pattern "PxrTexture" "surf" "string filename" ["checker_mc.tga"]
+Bxdf "PxrLMDiffuse" "ground"
+"reference color frontColor" ["surf:resultRGB"]
+
+Attribute "identifier" "string name" ["pPlane3"]
+Attribute "identifier" "float id" [2]
+ConcatTransform [ 1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1 ]
+AttributeBegin 
+AttributeBegin 
+Attribute "identifier" "string name" ["pPlane3Shape"]
+Attribute "identifier" "float id" [6]
+Sides 2
+Attribute "visibility" "int camera" [1] "int indirect" [1] "int transmission" [1]
+Attribute "shade" "string transmissionhitmode" ["shader"]
+Attribute "grouping" "string membership" ["+reflection,refraction,shadow"]
+##RLF Inject SurfaceShading
+TransformBegin 
+PointsGeneralPolygons [2] [6 6] [7 9 8 6 4 5 11 3 1 10 0 2] "P" [-0.430413 0.0912925 0.140314 0.0827266 0.0883139 0.0848502 -0.353573 0.00963901 -0.169383 -0.00601741 0.0912925 -0.265161
+-0.414687 0.0407186 0.585283 0.420489 -0.0348042 0.340144 -0.659379 0 -0.2035 0.216908 0 0
+-0.410367 -0.0360326 -0.489352 0.379321 0.0421381 -0.636277 -0.115677 -0.0220283 0.166917 -0.155485 0.0372916 -0.133179] "constant string primtype" ["mesh"] "facevarying normal N" [0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889
+0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889
+0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889 0.0035844 0.999817 -0.0187889] "facevarying float s" [0.480387 0.969831 0.856812 0.636926 0.0301694 0.218737 0.582832 0.684357 0.415118 0.351989 0.372454 0.610682] "facevarying float t" [0.758733 0.883666 0.276214 0.0846664 0.272891 0.915334 0.472277 0.587252 0.655517 0.502898 0.260793 0.319901]
+TransformEnd 
+AttributeEnd 
+AttributeEnd 
+AttributeEnd 

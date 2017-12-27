@@ -1,0 +1,76 @@
+WorldBegin
+
+Light "PxrDomeLight" "Light"
+"float intensity" [2]
+"string lightColorMap" ["room.jpg"]
+
+TransformBegin
+    Pattern "PxrTexture" "tex1" "string filename" ["marks.jpg"]
+    Bxdf "PxrLMPlastic" "plastic"
+    "reference color diffuseColor" ["tex1:resultRGB"]
+    "float diffuseRoughness" [0.01]
+    Translate 2.8 1 1.4
+    Sphere 1 -1 1 360
+TransformEnd
+
+TransformBegin
+    Pattern "PxrTexture" "tex2" "string filename" ["fabric.jpg"]
+    Bxdf "PxrLMDiffuse" "rusty"
+    "reference color frontColor" ["tex2:resultRGB"]
+    Translate 0 1 1.4
+    Sphere 1 -1 1 360
+TransformEnd
+
+TransformBegin
+    Pattern "PxrTexture" "tex3" "string filename" ["marble.jpg"]
+    Bxdf "PxrLMPlastic" "marble"
+    "reference color diffuseColor" ["tex3:resultRGB"]
+    "float diffuseRoughness" [0.1]
+    Translate -2.8 1 1.4
+    Sphere 1 -1 1 360
+TransformEnd
+
+TransformBegin
+    Pattern "PxrTexture" "tex4" "string filename" ["paint.jpg"]
+    Bxdf "PxrLMDiffuse" "paint"
+    "reference color frontColor" ["tex4:resultRGB"]
+    Translate 2.8 1 -1.4
+    Sphere 1 -1 1 360
+TransformEnd
+
+TransformBegin
+    Pattern "PxrTexture" "tex5" "string filename" ["tiles.jpg"]
+    Bxdf "PxrLMDiffuse" "tiles"
+    "reference color frontColor" ["tex5:resultRGB"]
+    Translate 0 1 -1.4
+    Sphere 1 -1 1 360
+TransformEnd
+
+TransformBegin
+    Pattern "PxrTexture" "tex6" "string filename" ["wood.jpg"]
+    Bxdf "PxrLMDiffuse" "wood"
+    "reference color frontColor" ["tex6:resultRGB"]
+    Translate -2.8 1 -1.4
+    Sphere 1 -1 1 360
+TransformEnd
+
+TransformBegin
+    Pattern "PxrTexture" "surf" "string filename" ["rusty.jpg"]
+    Bxdf "PxrLMDiffuse" "ground"
+    "reference color frontColor" ["surf:resultRGB"]
+
+    Scale 6.0 1.0 6.0
+    PointsGeneralPolygons
+    [1 1 1 1] [4 4 4 4] [0 1 4 3 1 2 5 4 3 4 7 6 4 5 8 7]
+    "P"
+    [-1 0 1 0 0 1 1 0 1 -1 0 0 0 0 0 1 0 0 -1 0 -1 0 0 -1 1 0 -1]
+    "constant string primtype" ["mesh"] "facevarying normal N"
+    [0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0
+    0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0]
+    "facevarying float s"
+    [0 0.5 0.5 0 0.5 1 1 0.5 0 0.5 0.5 0 0.5 1 1 0.5]
+    "facevarying float t"
+    [0 0 0.5 0.5 0 0 0.5 0.5 0.5 0.5 1 1 0.5 0.5 1 1]
+TransformEnd
+
+WorldEnd

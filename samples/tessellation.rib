@@ -1,0 +1,192 @@
+# teapot.rib
+# Author: Scott Iverson <jsiverson@xxxxx.edu>
+# Date: 6/7/95
+#
+Display "TeapotAfter.tif" "framebuffer" "rgb"
+Format 600 400 1
+Projection "perspective" "fov" 30
+Translate 0 0 25
+Rotate -22 1 0 0
+Rotate 19 0 1 0
+Translate 0 -3 0
+
+WorldBegin
+
+Light "PxrDomeLight" "Light"
+"float intensity" [1]
+"color lightColor" [0.5 0.5 0.5]
+
+TransformBegin
+Translate 0.0 20.0 15.0
+Rotate 215 1 0 0
+Scale 4.5 1 4.5
+
+Light "PxrMeshLight" "area"
+"color lightColor" [1.0 1.0 1.0]
+"float intensity" [5]
+PointsGeneralPolygons
+[1 1 1 1] [4 4 4 4] [0 1 4 3 1 2 5 4 3 4 7 6 4 5 8 7]
+"P"
+[-1 0 1 0 0 1 1 0 1 -1 0 0 0 0 0 1 0 0 -1 0 -1 0 0 -1 1 0 -1]
+"constant string primtype" ["mesh"] "facevarying normal N"
+[0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0
+0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0]
+"facevarying float s"
+[0 0.5 0.5 0 0.5 1 1 0.5 0 0.5 0.5 0 0.5 1 1 0.5]
+"facevarying float t"
+[0 0 0.5 0.5 0 0 0.5 0.5 0.5 0.5 1 1 0.5 0.5 1 1]
+TransformEnd
+
+
+Pattern "PxrTexture" "surf" "string filename" ["checker_mc.tga"]
+Bxdf "PxrLMDiffuse" "ground"
+"reference color frontColor" ["surf:resultRGB"]
+
+TransformBegin
+        Translate 0 0 -6
+        ### Spout ###
+        AttributeBegin
+                Sides 2
+                Translate 3 1.3 0
+                Rotate 30 0 0 1
+                Rotate 90 0 1 0
+                Attribute "tesselation" "int quadrics" [1]
+                Hyperboloid 1.2 0 0 0.4 0 5.7 360
+        AttributeEnd
+        ### Handle ###
+        AttributeBegin
+                Translate -4.3 4.2 0
+                TransformBegin
+                        Rotate 180 0 0 1
+                        Attribute "tesselation" "int quadrics" [1]
+                        Torus 2.9 0.26 0 360 90
+                TransformEnd
+                TransformBegin
+                        Translate -2.38 0 0
+                        Rotate 90 0 0 1
+                        Attribute "tesselation" "int quadrics" [1]
+                        Torus 0.52 0.26 0 360 90
+                TransformEnd
+                Translate -2.38 0.52 0
+                Rotate 90 0 1 0
+                Attribute "tesselation" "int quadrics" [1]
+                Cylinder 0.26 0 3.3 360
+        AttributeEnd
+        ### Body ###
+        AttributeBegin
+                Rotate -90 1 0 0
+                TransformBegin
+                        Translate 0 0 1.7
+                        Scale 1 1 1.05468457
+                        Attribute "tesselation" "int quadrics" [1]
+                        Sphere 5 0 3.12897569 360
+                TransformEnd
+                TransformBegin
+                        Translate 0 0 1.7
+                        Scale 1 1 0.463713017
+                        Attribute "tesselation" "int quadrics" [1]
+                        Sphere 5 -3.66606055 0 360
+                TransformEnd
+        AttributeEnd
+        ### top ###
+        AttributeBegin
+                Rotate -90 1 0 0
+                Translate 0 0 5
+                AttributeBegin
+                        Scale 1 1 0.2051282
+                        Attribute "tesselation" "int quadrics" [1]
+                        Sphere 3.9 0 3.9 360
+                AttributeEnd
+                Translate 0 0 0.8
+                AttributeBegin
+                        Orientation "rh"
+                        Sides 2
+                        Attribute "tesselation" "int quadrics" [1]
+                        Torus 0.75 0.45 90 180 360
+                AttributeEnd
+                Translate 0 0 0.675
+                Attribute "tesselation" "int quadrics" [1]
+                Torus 0.75 0.225 -90 90 360
+                Attribute "tesselation" "int quadrics" [1]
+                Disk 0.225 0.75 360
+        AttributeEnd
+TransformEnd
+
+TransformBegin
+        Translate 0 0 6
+        ### Spout ###
+        AttributeBegin
+                Sides 2
+                Translate 3 1.3 0
+                Rotate 30 0 0 1
+                Rotate 90 0 1 0
+                Hyperboloid 1.2 0 0 0.4 0 5.7 360
+        AttributeEnd
+        ### Handle ###
+        AttributeBegin
+                Translate -4.3 4.2 0
+                TransformBegin
+                        Rotate 180 0 0 1
+                        Torus 2.9 0.26 0 360 90
+                TransformEnd
+                TransformBegin
+                        Translate -2.38 0 0
+                        Rotate 90 0 0 1
+                        Torus 0.52 0.26 0 360 90
+                TransformEnd
+                Translate -2.38 0.52 0
+                Rotate 90 0 1 0
+                Cylinder 0.26 0 3.3 360
+        AttributeEnd
+        ### Body ###
+        AttributeBegin
+                Rotate -90 1 0 0
+                TransformBegin
+                        Translate 0 0 1.7
+                        Scale 1 1 1.05468457
+                        Sphere 5 0 3.12897569 360
+                TransformEnd
+                TransformBegin
+                        Translate 0 0 1.7
+                        Scale 1 1 0.463713017
+                        Sphere 5 -3.66606055 0 360
+                TransformEnd
+        AttributeEnd
+        ### top ###
+        AttributeBegin
+                Rotate -90 1 0 0
+                Translate 0 0 5
+                AttributeBegin
+                        Scale 1 1 0.2051282
+                        Sphere 3.9 0 3.9 360
+                AttributeEnd
+                Translate 0 0 0.8
+                AttributeBegin
+                        Orientation "rh"
+                        Sides 2
+                        Torus 0.75 0.45 90 180 360
+                AttributeEnd
+                Translate 0 0 0.675
+                Torus 0.75 0.225 -90 90 360
+                Disk 0.225 0.75 360
+        AttributeEnd
+TransformEnd
+
+TransformBegin
+        Scale 20.0 1.0 20.0
+        Bxdf "PxrLMDiffuse" "ground" "color frontColor" [0.9 0.9 0.9]
+        PointsGeneralPolygons
+        [1 1 1 1] [4 4 4 4] [0 1 4 3 1 2 5 4 3 4 7 6 4 5 8 7]
+        "P"
+        [-1 0 1 0 0 1 1 0 1 -1 0 0 0 0 0 1 0 0 -1 0 -1 0 0 -1 1 0 -1]
+        "constant string primtype" ["mesh"] "facevarying normal N"
+        [0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0
+        0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0]
+        "facevarying float s"
+        [0 0.5 0.5 0 0.5 1 1 0.5 0 0.5 0.5 0 0.5 1 1 0.5]
+        "facevarying float t"
+        [0 0 0.5 0.5 0 0 0.5 0.5 0.5 0.5 1 1 0.5 0.5 1 1]
+TransformEnd
+
+WorldEnd
+
